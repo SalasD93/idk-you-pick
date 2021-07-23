@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!--This is only for the layout.
-    Remember we can't use BOOTSTRAP for the finished project!-->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link src="script.js">
     <title>Honey, you pick?</title>
     <style>
         body {
@@ -25,6 +23,7 @@
    </style>
 </head>
 <body>
+<<<<<<< HEAD
     <section class="hero">
         <div class="container">
             <div class="row">
@@ -51,4 +50,40 @@
         </div>
     </section>
 </body>
+=======
+    <script>
+        fetch("https://api.documenu.com/v2/restaurants/zip_code/90210?size=30&cuisine=Italian&top_cuisines=true&page=2", {
+            "method": "GET",
+            "headers": {
+                "x-api-key": "fe622a5ac3aa4f64e60a0ab9c844306d",
+                "x-rapidapi-host": "documenu.p.rapidapi.com"
+            }
+        })
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+        })
+        .catch(err => {
+            console.error(err);
+        });
+        // fetch(`https://api.documenu.com/v2/restaurant/4072702673999819?key=fe622a5ac3aa4f64e60a0ab9c844306d`)
+        // .then(function(response){
+        //     return response.json();
+        // })
+        // .then(function(response) {
+        //     console.log(response);
+        // })
+        if ('geolocation' in navigator) {
+        console.log('geolocation available');
+        navigator.geolocation.getCurrentPosition(position => {
+            console.log(position.coords);
+        });
+        } else {
+            console.log('geolocation not available');
+        }
+    </script>
+    </body>
+>>>>>>> 45bab38 (add documenu API / add geolocation)
 </html>
