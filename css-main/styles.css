@@ -1,0 +1,71 @@
+html {
+    text-align: center;
+    height: 100vh;
+    background-image: url(../img/jonathan-borba-8l8Yl2ruUsg-unsplash.jpg);
+    background-size: cover;
+}
+
+a {
+    text-decoration: none !important;
+}
+
+#start {
+    background-color: whitesmoke;
+  border: none;
+  color:black;
+  text-align: center;
+  font-size: 16px;
+   opacity: 0.6;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#start:hover {
+    opacity: 1;
+}
+
+#intro-container {
+    /* margin: 1em auto; */
+    
+    justify-content: center;
+    align-items: center;
+    word-wrap: normal;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+  #start {
+       margin-top: 20px;
+ }
+
+ #zip-input {
+     justify-content: center;
+     text-align: center; 
+     background-color: skyblue;
+     font-size: 11px;
+     
+ }
+
+ #zip-text {
+     color: whitesmoke;
+     margin-top: 20px;
+ }
+
+ #zip-button {
+    background-color: whitesmoke;
+    border: none;
+    color:black;
+    text-align: center;
+    font-size: 16px;
+     opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
+ }
+
+ #zip-button:hover {
+    opacity: 1;
+}
