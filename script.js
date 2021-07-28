@@ -18,30 +18,6 @@ body.append(questionContainer);
 questionContainer.appendChild(question);
 questionContainer.appendChild(answers);
 
-// This is for the generated restuarant to be displayed
-var displayContainer = document.createElement('div');
-$(displayContainer).attr('id', "display-container");
-// Add css class for display container
-$(displayContainer).addClass("");
-var displayRestaurant = document.createElement('p');
-$(displayRestaurant).attr('id', "restaurant-name");
-// Add css class for restaurant name
-$(displayRestaurant).addClass("");
-var restaurantName = localStorage.getItem("Name");
-// if you are trying to style just the restaurant name use the class restaurant in this span
-displayRestaurant.innerHTML = "Your restaurant is:" + "<br/>" + `<span class="restaurant">${restaurantName}</span>`
-console.log(restaurantName);
-// This is a link for the address to link to directions to the restaurant
-var displayAddress = document.createElement('a');
-$(displayAddress).attr('id', "restaurant-address");
-// Add css class for address link here
-$(displayAddress).addClass("");
-var restaurantAddress = localStorage.getItem("Address");
-$(displayAddress).text(restaurantAddress);
-body.append(displayContainer);
-displayContainer.appendChild(displayRestaurant);
-displayContainer.appendChild(displayAddress);
-
 localStorage.clear();
 $(document).ready(function(){
     // container for intro
@@ -115,15 +91,10 @@ $(document).ready(function(){
         // this calls the API to start
         console.log(localStorage.getItem("zip_code"));
         getData();
-    });
-    function hideRestaurant() {
-        $(displayContainer).hide();
-    }
-    
+    });    
     // Hide Zip until Start Button clicked to call showZip function
     hideZip();
     hideQuestions();
-    hideRestaurant();
 });
 function showQuestions() {
     $(questionContainer).show();
@@ -132,6 +103,29 @@ function hideQuestions() {
     $(questionContainer).hide();
 }
 function showRestaurant() {
+    // This is for the generated restuarant to be displayed
+    var displayContainer = document.createElement('div');
+    $(displayContainer).attr('id', "display-container");
+    // Add css class for display container
+    $(displayContainer).addClass("");
+    var displayRestaurant = document.createElement('p');
+    $(displayRestaurant).attr('id', "restaurant-name");
+    // Add css class for restaurant name
+    $(displayRestaurant).addClass("");
+    var restaurantName = localStorage.getItem("Name");
+    // if you are trying to style just the restaurant name use the class restaurant in this span
+    displayRestaurant.innerHTML = "Your restaurant is:" + "<br/>" + `<span class="restaurant">${restaurantName}</span>`
+    console.log(restaurantName);
+    // This is a link for the address to link to directions to the restaurant
+    var displayAddress = document.createElement('a');
+    $(displayAddress).attr('id', "restaurant-address");
+    // Add css class for address link here
+    $(displayAddress).addClass("");
+    var restaurantAddress = localStorage.getItem("Address");
+    $(displayAddress).text(restaurantAddress);
+    body.append(displayContainer);
+    displayContainer.appendChild(displayRestaurant);
+    displayContainer.appendChild(displayAddress);
     $(displayContainer).show();
 }
 
