@@ -30,6 +30,7 @@ $(displayRestaurant).addClass("");
 var restaurantName = localStorage.getItem("Name");
 // if you are trying to style just the restaurant name use the class restaurant in this span
 displayRestaurant.innerHTML = "Your restaurant is:" + "<br/>" + `<span class="restaurant">${restaurantName}</span>`
+console.log(restaurantName);
 // This is a link for the address to link to directions to the restaurant
 var displayAddress = document.createElement('a');
 $(displayAddress).attr('id', "restaurant-address");
@@ -107,9 +108,12 @@ $(document).ready(function(){
         showZip();
     });
     $(submitBtn).on('click', function () {
+        var postalCode = $(zipInput).val().trim();
+        localStorage.setItem("zip_code", postalCode);
         hideZip();
         showQuestions();
         // this calls the API to start
+        console.log(localStorage.getItem("zip_code"));
         getData();
     });
     function hideRestaurant() {
@@ -133,8 +137,9 @@ function showRestaurant() {
 
 // Have a function that compares key words to items in the menu arrays
 // API for restuarants and menus by zip code
-const api_url = "https://api.documenu.com/v2/restaurants/zip_code/33773?size=20&fullmenu=true&top_cuisines=false&key=fe622a5ac3aa4f64e60a0ab9c844306d";
 async function getData() {
+    var zipCode = localStorage.getItem("zip_code");
+    const api_url = `https://api.documenu.com/v2/restaurants/zip_code/${zipCode}?size=20&fullmenu=true&top_cuisines=false&key=fe622a5ac3aa4f64e60a0ab9c844306d`;
     const response = await fetch(api_url, {
         "method": "GET",
         "headers": {
