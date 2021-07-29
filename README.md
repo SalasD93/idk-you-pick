@@ -1,6 +1,6 @@
-# Project1
+# Project1 / IDK, You Pick!
 
-**Description**
+## DESCRIPTION
 
 As a class project, we are going to create an application that randomly produces a restaurant in your area based off your current location and selected criteria. This application is being created to remedy the issue that most couples have at meal time: "Where do you want to eat, Babe?"-"I don't know, you pick." This application can also be used for any instance a meal cannot be decided on. Whether it's couples, friends, siblings, or you just can't decide between me, myself, and I, this app will provide a solution to this everyday issue.
 
@@ -28,3 +28,42 @@ Then a message displays my selection
 When I am finished answering all the questions
 Then I am given the name of a random restaurant based off of the above criteria
 ```
+
+## BUILT WITH
+**Languages Used**
+- HTML
+- CSS
+- JavaScript
+
+**Libraries / Frameworks**
+- jQuery
+- Bulma CSS Framework
+
+**API References**
+- Documenu API
+
+
+## CONTRIBUTORS
+- Diana Salas
+- Malik Harris
+- Jeremy McGuirk
+- Grant Leasure
+
+## MOCK-UP
+<!-- add image -->
+
+
+## DEPLOYED WEBPAGE
+
+https://sirmaaalik.github.io/Project1/
+
+
+## REPOSITORY
+
+https://github.com/Sirmaaalik/Project1
+
+
+## COPYRIGHT
+Diana Salas, Malik Harris, Jeremy McGuirk, Grant Leasure
+
+© 2021 All Rights Reserved
