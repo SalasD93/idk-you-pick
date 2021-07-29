@@ -12,7 +12,7 @@ $(question).addClass("");
 var answers = document.createElement('div');
 $(answers).attr('id', "sine");
 // Add css class for question container here
-$(answers).addClass("");
+$(answers).addClass("buttons is-centered");
 $(question).text("What are you in the mood for?");
 body.append(questionContainer);
 questionContainer.appendChild(question);
@@ -56,11 +56,15 @@ $(document).ready(function(){
     // Add css class here
     $(zipP).addClass("is-info is-link");
     zipP.innerText = "Please enter your ZIP CODE.";
+    // This holds input use to center input box 
+    var inputContainer = document.createElement('div');
+    $(inputContainer).attr('id', "input-container");
+    $(inputContainer).addClass(" is-3");
     // This is for the text input field for the zip code
     var zipInput = document.createElement('textarea');
     $(zipInput).attr('id', "zip-input");
     // Add css class for input box
-    $(zipInput).addClass('column is-3 input is-small');
+    $(zipInput).addClass('input is-small');
     // This is for the zip code submit button
     var submitBtn = document.createElement('button');
     $(submitBtn).attr('id', "zip-button");
@@ -69,7 +73,8 @@ $(document).ready(function(){
     // Add elements to HTML
     body.append(zipContainer);
     zipContainer.appendChild(zipP);
-    zipContainer.appendChild(zipInput);
+    zipContainer.appendChild(inputContainer);
+    inputContainer.appendChild(zipInput);
     zipContainer.appendChild(submitBtn);
     function hideZip() {
         $(zipContainer).hide();
@@ -131,11 +136,11 @@ function showRestaurant() {
 // API for restuarants and menus by zip code
 async function getData() {
     var zipCode = localStorage.getItem("zip_code");
-    const api_url = `https://api.documenu.com/v2/restaurants/zip_code/${zipCode}?size=20&fullmenu=true&top_cuisines=false&key=fe622a5ac3aa4f64e60a0ab9c844306d`;
+    const api_url = `https://api.documenu.com/v2/restaurants/zip_code/${zipCode}?size=20&fullmenu=true&top_cuisines=false&key=8605e155e88b861cf10db384d0dfa34d`;
     const response = await fetch(api_url, {
         "method": "GET",
         "headers": {
-            "x-api-key": "fe622a5ac3aa4f64e60a0ab9c844306d",
+            "x-api-key": "8605e155e88b861cf10db384d0dfa34d",
             "x-rapidapi-host": "documenu.p.rapidapi.com"
         }
     });
@@ -153,13 +158,7 @@ async function getData() {
         // This prevents duplicate cuisines
         for (var z = 0; z < currentRestaurant.cuisines.length; z++) {
             if (currentRestaurant.cuisines[z] != '') {
-                // This adds the restaurants to the matching cuisine object
-                if (cuisineList[currentRestaurant.cuisines[z]]) {
-                    cuisineList[currentRestaurant.cuisines[z]].push(currentRestaurant);
-                } else {
-                    cuisineList[currentRestaurant.cuisines[z]] = [currentRestaurant];
-                }
-                
+                document.querySelector('#sine').innerHTML += `<button class="button cuisine">${currentRestaurant.cuisines[z]}</button>`;
             }
         }
     }
