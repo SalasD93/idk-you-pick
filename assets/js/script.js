@@ -179,12 +179,20 @@ async function getData() {
     // Can use this function to created more questions by logging the information to localStorage
     function selectedCuisine(cuisine) {
         console.log(cuisine);
-        var chosenRestaurant = cuisineList[cuisine][Math.floor(Math.random() * cuisineList[cuisine].length)];
-        console.log(chosenRestaurant);
-        // This stores restaurant info to be shown on page
-        const restName = chosenRestaurant.restaurant_name;
-        localStorage.setItem("Name", restName);
-        const restAddress = chosenRestaurant.address.formatted;
-        localStorage.setItem("Address", restAddress);
+        for (var i = 0; i < totalRestaurants.data.length; i++) {
+            var currentRestaurant = totalRestaurants.data[i];
+            restCuisine = restCuisine.concat(currentRestaurant.cuisines);
+            if (currentRestaurant.cuisines.includes(cuisine)) {
+                console.log(currentRestaurant.restaurant_name);
+                const restName = currentRestaurant.restaurant_name;
+                // $('#name').text(restName);
+                localStorage.setItem("Name", restName);
+console.log(currentRestaurant.address.formatted);
+                const restAddress = currentRestaurant.address.formatted;
+                // $('#address').text(restAddress);
+                localStorage.setItem("Address", restAddress);
+            }
+    
+        }
     }
 }

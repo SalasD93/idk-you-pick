@@ -1,39 +1,37 @@
 *, *::Before, *::after {
     box-sizing: border-box;
 }
- body {
+
+body {
     text-align: center;
     position: relative;
     height: 100vh;
-    background-size: cover;
-   /* display:  flex; */
+    width: 100%;
     align-items: center;
     justify-content: center;
-    background-image: url(../img/vegan-food.jpg);
-    background-repeat: no-repeat;
-   
-    
 }
 
-.body::before {
+body::before {
     content: "";
     height: 100vh;
+    background-image: url(../img/vegan-food.jpg);
     background-size: cover;
-      position: absolute;
-      top: 0px;
-      right: 0px;
-      bottom: 0px;
-      left: 0px; 
-      opacity: 0.30;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px; 
+    opacity: 0.30;
 }
 
+#intro {
+    color: rgb(95, 0, 0);
+    position: relative;
+}   
 
-/* img:hover {
-    opacity: 1.0;
-} */
 
 #input-container {
-   
+    position: relative;
     align-items: center;
     justify-content: center;
     text-align: center;
@@ -45,31 +43,26 @@
 
 header a {
     text-decoration: none !important;
-    
 }
 
 .header {
-    margin: 0;
-    /*background-color:black;*/
     border-bottom:3px solid black;
-    /* opacity: 0.6; */
     padding: 23px 0;
-    
 }
 
-
 #start {
+    position: relative;
     background-color: whitesmoke;
     margin-top: 20px;
-  border: none;
-  color:black;
-  text-align: center;
-  font-size: 16px;
-   opacity: 0.6;
-  transition: 0.3s;
-  display: inline-block;
-  text-decoration: none;
-  cursor: pointer;
+    border: none;
+    color:black;
+    text-align: center;
+    font-size: 16px;
+    opacity: 0.6;
+    transition: 0.3s;
+    display: inline-block;
+    text-decoration: none;
+    cursor: pointer;
 }
 
 #start:hover {
@@ -78,7 +71,7 @@ header a {
 
 #intro-container {
     margin: 1em auto;
-    
+    position: relative;
     justify-content: center;
     align-items: center;
     word-wrap: normal;
@@ -86,39 +79,34 @@ header a {
     padding-bottom: 20px;
 }
 
-  /* #start {
-       margin-top: 20px;
- } */
+#zip-container {
+    position: relative;
+}
 
- /* #zip-input {
-     justify-content: center;
-     width: 100px;
-     text-align: center; 
-      background-color: skyblue;
-     font-size: 11px; */
-     
- 
+#zip-text {
+    color: black;
+    margin-top: 20px;
+}
 
- #zip-text {
-     color: black;
-     margin-top: 20px;
- }
-
- #zip-button {
+#zip-button {
     background-color: whitesmoke;
     border: none;
     color:black;
     text-align: center;
     font-size: 16px;
-     opacity: 0.6;
+    opacity: 0.6;
     transition: 0.3s;
     display: inline-block;
     text-decoration: none;
     cursor: pointer;
- }
+}
 
- #zip-button:hover {
+#zip-button:hover {
     opacity: 1;
+}
+
+#question-container {
+    position: relative;
 }
 
 #question {
@@ -129,10 +117,10 @@ header a {
 
 #sine {
     padding: 0 130px;
-    position: absolute;
+    position: relative;;
 }
 
 #display-container {
-    opacity: 60;
-
+    position: relative;
+    font-weight: bold;
 }
