@@ -18,7 +18,6 @@ body.append(questionContainer);
 questionContainer.appendChild(question);
 questionContainer.appendChild(answers);
 
-localStorage.clear();
 $(document).ready(function(){
     // container for intro
     var introContainer = document.createElement('div');
@@ -129,7 +128,7 @@ function showRestaurant() {
     $(displayContainer).show();
 }
 
-// Have a function that compares key words to items in the menu arrays
+// Have a function that compares key words to items in the menu arrays?
 // API for restuarants and menus by zip code
 async function getData() {
     var zipCode = localStorage.getItem("zip_code");
@@ -141,29 +140,34 @@ async function getData() {
             "x-rapidapi-host": "documenu.p.rapidapi.com"
         }
     });
-    console.log(response);
 
     const totalRestaurants = await response.json();
-    console.log(totalRestaurants);
-
-    // zip code is postal_code for restaurant data
-    // const restMenu = totalRestaurants.data[1].menus;
-    // console.log(restMenu);
-    // const menuItems = totalRestaurants.data[1].menus[0].menu_sections[0];
-    // console.log(menuItems);
-    
-    // This will get the cuisines and put them in buttons
+    // This loop through restaurants and get the cuisines and put them in buttons
+    // Empty object to store like cuisines
+    var cuisineList = {};
+    // Empty array to store all cuisines
     var restCuisine = [];
+    // This loops through available restaurants
     for (var i = 0; i < totalRestaurants.data.length; i++) {
         var currentRestaurant = totalRestaurants.data[i];
         restCuisine = restCuisine.concat(currentRestaurant.cuisines);
+        // This prevents duplicate cuisines
         for (var z = 0; z < currentRestaurant.cuisines.length; z++) {
             if (currentRestaurant.cuisines[z] != '') {
-                document.querySelector('#sine').innerHTML += `<button class="cuisine">${currentRestaurant.cuisines[z]}</button>`;
+                // This adds the restaurants to the matching cuisine object
+                if (cuisineList[currentRestaurant.cuisines[z]]) {
+                    cuisineList[currentRestaurant.cuisines[z]].push(currentRestaurant);
+                } else {
+                    cuisineList[currentRestaurant.cuisines[z]] = [currentRestaurant];
+                }
+                
             }
         }
     }
-    console.log(restCuisine);
+    // This will display the cuisine names for the cuisine object of restaurants onto the buttons
+    for (cuisine in cuisineList) {
+        document.querySelector('#sine').innerHTML += `<button class="cuisine">${cuisine}</button>`;
+    }
 
     // This gets the selected cuisine
     $('.cuisine').on('click', function (e) {
@@ -173,27 +177,16 @@ async function getData() {
         showRestaurant();
     });
 
-    // clear all cuisine buttons after button click clear HTML of container
-    // look through total restaurants list to match picked cuisine with for loop
-    // show them the restaurant
-    // maybe add menu items
-    // This function uses the selected cuisine to match with a restaurant / gets restaurant name and address
+    // This function get the information that matches the random restaurant / gets restaurant name and address
+    // Can use this function to created more questions by logging the information to localStorage
     function selectedCuisine(cuisine) {
         console.log(cuisine);
-        for (var i = 0; i < totalRestaurants.data.length; i++) {
-            var currentRestaurant = totalRestaurants.data[i];
-            restCuisine = restCuisine.concat(currentRestaurant.cuisines);
-            if (currentRestaurant.cuisines.includes(cuisine)) {
-                console.log(currentRestaurant.restaurant_name);
-                const restName = currentRestaurant.restaurant_name;
-                // $('#name').text(restName);
-                localStorage.setItem("Name", restName);
-                console.log(currentRestaurant.address.formatted);
-                const restAddress = currentRestaurant.address.formatted;
-                // $('#address').text(restAddress);
-                localStorage.setItem("Address", restAddress);
-            }
-    
-        }
+        var chosenRestaurant = cuisineList[cuisine][Math.floor(Math.random() * cuisineList[cuisine].length)];
+        console.log(chosenRestaurant);
+        // This stores restaurant info to be shown on page
+        const restName = chosenRestaurant.restaurant_name;
+        localStorage.setItem("Name", restName);
+        const restAddress = chosenRestaurant.address.formatted;
+        localStorage.setItem("Address", restAddress);
     }
 }
