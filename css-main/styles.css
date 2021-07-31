@@ -29,7 +29,6 @@ body::before {
     position: relative;
 }   
 
-
 #input-container {
     position: relative;
     align-items: center;
@@ -38,8 +37,6 @@ body::before {
     padding: 0 350px;
     padding-bottom: 10px;
 }
-
-
 
 header a {
     text-decoration: none !important;
