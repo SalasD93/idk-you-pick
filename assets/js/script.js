@@ -3,10 +3,14 @@ var body = document.body;
 var getMap = function(){
     var convertAddress = localStorage.getItem("Address");
     var linkAddress = convertAddress.replace(/\s/g,"+");
+    var mapContainer = document.createElement('div');
+    $(mapContainer).attr('id', "map-container");
+    $(mapContainer).addClass("container");
     var map = document.createElement('iframe');
-    $(map).attr('width="800" height="650" style="border:0"loading="lazy" allowfullscreen')
-    $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}`)
-    body.append(map);
+    $(map).attr('style','width: 50vw; height: 30vw;');
+    $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}+loading=lazy+allowfullscreen`);
+    body.append(mapContainer);
+    mapContainer.appendChild(map);
 }
 
 var questionContainer = document.createElement('div');
