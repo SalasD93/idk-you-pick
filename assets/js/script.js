@@ -1,6 +1,14 @@
 var body = document.body;
 
-// This is to display questions and answer buttons
+var getMap = function(){
+    var convertAddress = localStorage.getItem("Address");
+    var linkAddress = convertAddress.replace(/\s/g,"+");
+    var map = document.createElement('iframe');
+    $(map).attr('width="800" height="650" style="border:0"loading="lazy" allowfullscreen')
+    $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}`)
+    body.append(map);
+}
+
 var questionContainer = document.createElement('div');
 $(questionContainer).attr('id', "question-container");
 // Add css class for question container here
@@ -126,10 +134,23 @@ function showRestaurant() {
     $(displayAddress).addClass("");
     var restaurantAddress = localStorage.getItem("Address");
     $(displayAddress).text(restaurantAddress);
+    $(displayAddress).on('click',function(){
+        getMap();
+    })
+    //This function is to hide the restaurant's address and display it on the map.
+    //The user will see where the restaurant is located.
+    var directionsButton = document.createElement('button');
+    $(directionsButton).addClass("button is-info");
+    directionsButton.innerHTML = "MAP VIEW";
     body.append(displayContainer);
     displayContainer.appendChild(displayRestaurant);
     displayContainer.appendChild(displayAddress);
+    displayContainer.appendChild(directionsButton);
     $(displayContainer).show();
+    $(directionsButton).on('click', function(){
+        $(displayContainer).hide();
+        getMap();
+    });
 }
 
 // Have a function that compares key words to items in the menu arrays?
@@ -179,20 +200,13 @@ async function getData() {
     // Can use this function to created more questions by logging the information to localStorage
     function selectedCuisine(cuisine) {
         console.log(cuisine);
-        for (var i = 0; i < totalRestaurants.data.length; i++) {
-            var currentRestaurant = totalRestaurants.data[i];
-            restCuisine = restCuisine.concat(currentRestaurant.cuisines);
-            if (currentRestaurant.cuisines.includes(cuisine)) {
-                console.log(currentRestaurant.restaurant_name);
-                const restName = currentRestaurant.restaurant_name;
-                // $('#name').text(restName);
-                localStorage.setItem("Name", restName);
-console.log(currentRestaurant.address.formatted);
-                const restAddress = currentRestaurant.address.formatted;
-                // $('#address').text(restAddress);
-                localStorage.setItem("Address", restAddress);
-            }
-    
-        }
+        var chosenRestaurant = cuisineList[cuisine][Math.floor(Math.random() * cuisineList[cuisine].length)];
+        console.log(chosenRestaurant);
+        // This stores restaurant info to be shown on page
+        const restName = chosenRestaurant.restaurant_name;
+        localStorage.setItem("Name", restName);
+        const restAddress = chosenRestaurant.address.formatted;       
+        localStorage.setItem("Address", restAddress);
+        console.log(chosenRestaurant.address.formatted);
     }
 }

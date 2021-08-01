@@ -2,6 +2,10 @@
     box-sizing: border-box;
 }
 
+iframe {
+    position: relative;
+}
+
 body {
     text-align: center;
     position: relative;
