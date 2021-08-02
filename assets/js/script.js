@@ -1,55 +1,46 @@
 var body = document.body;
-
+// This is the Map Embed API
 var getMap = function(){
     var convertAddress = localStorage.getItem("Address");
+    // This replaces the spaces with + to be used in API call
     var linkAddress = convertAddress.replace(/\s/g,"+");
     var mapContainer = document.createElement('div');
     $(mapContainer).attr('id', "map-container");
     $(mapContainer).addClass("container");
     var map = document.createElement('iframe');
     $(map).addClass("map");
-    // $(map).attr('style','width: 45vw; height: 30vw;');
     $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}+loading=lazy+allowfullscreen`);
     body.append(mapContainer);
     mapContainer.appendChild(map);
 }
-
+// This is for the questions
 var questionContainer = document.createElement('div');
 $(questionContainer).attr('id', "question-container");
-// Add css class for question container here
-$(questionContainer).addClass("");
 var question = document.createElement('p');
 $(question).attr('id', "question");
-// Add css class for question text here
-$(question).addClass("");
 var answers = document.createElement('div');
 $(answers).attr('id', "sine");
-// Add css class for question container here
 $(answers).addClass("buttons is-centered");
 $(question).text("What are you in the mood for?");
 body.append(questionContainer);
 questionContainer.appendChild(question);
 questionContainer.appendChild(answers);
-
+// This will load items when page starts
 $(document).ready(function(){
-    // container for intro
+    // This holds the intro display
     var introContainer = document.createElement('div');
-    $(introContainer).attr('id', 'intro-container');
-    // add css class for container
+    $(introContainer).attr('id', "intro-container");
     $(introContainer).addClass("column has-text-white");
     // This is for the intro paragraph
     var introP = document.createElement('p');
     $(introP).attr('id', "intro");
-    // Add the css class here
     $(introP).addClass("column notifcation is-size-5 has-text-weight-semibold");
     // This is for the start button
     var startBtn = document.createElement('button');
     $(startBtn).attr('id', "start");
-    // Add css class for button from Bulma CSS framework
-    $(startBtn).addClass('button is-info is-link');
+    $(startBtn).addClass("button is-info is-link");
     introP.innerHTML = "This application allows you to randomly generate a restaurant in your area when you are having a hard time choosing where to eat." + "<br/>" + "To use this app, enter your zip code on the next page and answer the following questions.";
     startBtn.innerHTML = "START";
-    // Adds elements to HTML
     body.append(introContainer);
     introContainer.appendChild(introP);
     introContainer.appendChild(startBtn);
@@ -57,38 +48,33 @@ $(document).ready(function(){
     function hideIntro() {
         $(introContainer).hide();
     }
-
     // This is the container for the zip code info
     var zipContainer = document.createElement('div');
     $(zipContainer).attr('id', "zip-container");
-    // Add the container class for css here
     $(zipContainer).addClass("column");
-    // This is the zip code p
+    // This is the zip code text
     var zipP = document.createElement('p');
     $(zipP).attr('id', "zip-text");
-    // Add css class here
     $(zipP).addClass("is-info is-link");
     zipP.innerText = "Please enter your ZIP CODE:";
-    // This holds input use to center input box 
     var inputContainer = document.createElement('div');
     $(inputContainer).attr('id', "input-container");
     $(inputContainer).addClass("container is-3");
     // This is for the text input field for the zip code
     var zipInput = document.createElement('textarea');
     $(zipInput).attr('id', "zip-input");
-    // Add css class for input box
     $(zipInput).addClass("is-small");
     // This is for the zip code submit button
     var submitBtn = document.createElement('button');
     $(submitBtn).attr('id', "zip-button");
     $(submitBtn).addClass("button is-info");
     submitBtn.innerHTML = "SUBMIT";
-    // Add elements to HTML
     body.append(zipContainer);
     zipContainer.appendChild(zipP);
     zipContainer.appendChild(inputContainer);
     inputContainer.appendChild(zipInput);
     zipContainer.appendChild(submitBtn);
+    // These functions show and hide different sets of information
     function hideZip() {
         $(zipContainer).hide();
     }
@@ -105,40 +91,35 @@ $(document).ready(function(){
         hideZip();
         showQuestions();
         // this calls the API to start
-        console.log(localStorage.getItem("zip_code"));
         getData();
     });    
     // Hide Zip until Start Button clicked to call showZip function
     hideZip();
     hideQuestions();
 });
+// These funtions show and hide different sets of information
 function showQuestions() {
     $(questionContainer).show();
 }
 function hideQuestions() {
     $(questionContainer).hide();
 }
+// This funtion holds the restaurant data
 function showRestaurant() {
     // This is for the generated restuarant to be displayed
     var displayContainer = document.createElement('div');
     $(displayContainer).attr('id', "display-container");
-    // Add css class for display container
-    $(displayContainer).addClass("");
     var displayRestaurant = document.createElement('p');
     $(displayRestaurant).attr('id', "restaurant-name");
-    // Add css class for restaurant name
-    $(displayRestaurant).addClass("");
     var restaurantName = localStorage.getItem("Name");
     // if you are trying to style just the restaurant name use the class restaurant in this span
     displayRestaurant.innerHTML = "Your restaurant is:" + "<br/>" + `<span class="restaurant">${restaurantName}</span>`
-    console.log(restaurantName);
     // This is a link for the address to link to directions to the restaurant
     var displayAddress = document.createElement('a');
     $(displayAddress).attr('id', "restaurant-address");
-    // Add css class for address link here
-    $(displayAddress).addClass("");
     var restaurantAddress = localStorage.getItem("Address");
     $(displayAddress).text(restaurantAddress);
+    // This link calls and displays the map API
     $(displayAddress).on('click',function(){
         $(displayContainer).hide();
         getMap();
@@ -153,13 +134,12 @@ function showRestaurant() {
     displayContainer.appendChild(displayAddress);
     displayContainer.appendChild(directionsButton);
     $(displayContainer).show();
+    // This button calls and displays the map API
     $(directionsButton).on('click', function(){
         $(displayContainer).hide();
         getMap();
     });
 }
-
-// Have a function that compares key words to items in the menu arrays?
 // API for restuarants and menus by zip code
 async function getData() {
     var zipCode = localStorage.getItem("zip_code");
@@ -171,9 +151,8 @@ async function getData() {
             "x-rapidapi-host": "documenu.p.rapidapi.com"
         }
     });
-
     const totalRestaurants = await response.json();
-    // This loop through restaurants and get the cuisines and put them in buttons
+    // This loops through restaurants / gets the cuisines and puts them in buttons
     // Empty object to store like cuisines
     var cuisineList = {};
     // Empty array to store all cuisines
@@ -193,7 +172,6 @@ async function getData() {
     for (cuisine in cuisineList) {
         document.querySelector('#sine').innerHTML += `<button class="cuisine">${cuisine}</button>`;
     }
-
     // This gets the selected cuisine
     $('.cuisine').on('click', function (e) {
         selectedCuisine(e.target.innerText);
@@ -201,18 +179,13 @@ async function getData() {
         hideQuestions();
         showRestaurant();
     });
-
     // This function get the information that matches the random restaurant / gets restaurant name and address
-    // Can use this function to created more questions by logging the information to localStorage
     function selectedCuisine(cuisine) {
-        console.log(cuisine);
         var chosenRestaurant = cuisineList[cuisine][Math.floor(Math.random() * cuisineList[cuisine].length)];
-        console.log(chosenRestaurant);
         // This stores restaurant info to be shown on page
         const restName = chosenRestaurant.restaurant_name;
         localStorage.setItem("Name", restName);
         const restAddress = chosenRestaurant.address.formatted;       
         localStorage.setItem("Address", restAddress);
-        console.log(chosenRestaurant.address.formatted);
     }
 }
