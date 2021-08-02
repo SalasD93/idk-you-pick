@@ -7,7 +7,8 @@ var getMap = function(){
     $(mapContainer).attr('id', "map-container");
     $(mapContainer).addClass("container");
     var map = document.createElement('iframe');
-    $(map).attr('style','width: 50vw; height: 30vw;');
+    $(map).addClass("map");
+    // $(map).attr('style','width: 45vw; height: 30vw;');
     $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}+loading=lazy+allowfullscreen`);
     body.append(mapContainer);
     mapContainer.appendChild(map);
@@ -61,22 +62,22 @@ $(document).ready(function(){
     var zipContainer = document.createElement('div');
     $(zipContainer).attr('id', "zip-container");
     // Add the container class for css here
-    $(zipContainer).attr("");
+    $(zipContainer).addClass("column");
     // This is the zip code p
     var zipP = document.createElement('p');
     $(zipP).attr('id', "zip-text");
     // Add css class here
     $(zipP).addClass("is-info is-link");
-    zipP.innerText = "Please enter your ZIP CODE.";
+    zipP.innerText = "Please enter your ZIP CODE:";
     // This holds input use to center input box 
     var inputContainer = document.createElement('div');
     $(inputContainer).attr('id', "input-container");
-    $(inputContainer).addClass(" is-3");
+    $(inputContainer).addClass("container is-3");
     // This is for the text input field for the zip code
     var zipInput = document.createElement('textarea');
     $(zipInput).attr('id', "zip-input");
     // Add css class for input box
-    $(zipInput).addClass('input is-small');
+    $(zipInput).addClass("is-small");
     // This is for the zip code submit button
     var submitBtn = document.createElement('button');
     $(submitBtn).attr('id', "zip-button");
@@ -139,12 +140,13 @@ function showRestaurant() {
     var restaurantAddress = localStorage.getItem("Address");
     $(displayAddress).text(restaurantAddress);
     $(displayAddress).on('click',function(){
+        $(displayContainer).hide();
         getMap();
     })
     //This function is to hide the restaurant's address and display it on the map.
     //The user will see where the restaurant is located.
     var directionsButton = document.createElement('button');
-    $(directionsButton).addClass("button is-info");
+    $(directionsButton).addClass("button is-link is-light");
     directionsButton.innerHTML = "MAP VIEW";
     body.append(displayContainer);
     displayContainer.appendChild(displayRestaurant);

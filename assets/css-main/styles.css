@@ -1,19 +1,24 @@
 *, *::Before, *::after {
     box-sizing: border-box;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
 }
 
 body {
     text-align: center;
     position: relative;
+    /* height: 100vh; */
     width: 100%;
     align-items: center;
     justify-content: center;
+    margin: 0;
 }
 
 body::before {
     content: "";
-    height: 100%;
-    width: 100%;
+    height: 150vh;
+    /* width: 100%; */
     background-image: url(../images/vegan-food.jpg);
     background-size: cover;
     position: absolute;
@@ -22,11 +27,6 @@ body::before {
     bottom: 0px;
     left: 0px; 
     opacity: 0.30;
-}
-
-iframe {
-    position: relative;
-    margin: 50px 0;
 }
 
 header a {
@@ -46,6 +46,7 @@ header a {
     word-wrap: normal;
     padding-top: 20px;
     padding-bottom: 20px;
+    margin: 100px 25vw;
 }
 
 #intro {
@@ -77,17 +78,32 @@ header a {
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 0 350px;
+    padding: 0;
     padding-bottom: 10px;
+    margin-top: 10px;
 }
 
 #zip-container {
     position: relative;
+    margin: 100px 25vw;
+}
+
+#zip-input {
+    position: relative;
+    border: none;
+    text-align: center;
+    font-size: 1rem;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    resize: none;
+    height: 3vh;
 }
 
 #zip-text {
     color: black;
     margin-top: 20px;
+    font-size: 1.25rem;
 }
 
 #zip-button {
@@ -109,21 +125,37 @@ header a {
 
 #question-container {
     position: relative;
+    margin: 100px 25vw;
 }
 
 #question {
-    font-size: 5vw;
+    font-size: 3vw;
     color: rgb(95, 0, 0);
 }
 
 #sine {
     padding: 0 130px;
-    position: relative;;
+    margin: 30px 0 50px 0;
+    position: relative;
+}
+
+.buttons:last-child {
+    margin-bottom: 0;
 }
 
 #display-container {
     position: relative;
     font-weight: bold;
+    display: inline-grid;
+}
+
+.restaurant {
+    font-size: 5vh;
+    color: rgb(95, 0, 0);
+}
+
+#restaurant-address {
+    margin: 20px;
 }
 
 #intro-container,
@@ -136,5 +168,43 @@ header a {
 }
 
 #map-container {
-    margin: 100px 250px;
+    margin: 5vw 20vw;
+}
+
+.map {
+    width: 45vw; 
+    height: 30vw;
+    position: relative;
+    margin: 50px 0;
+}
+
+@media screen and (max-width: 900px) {
+    body::before {
+        height: 100vh;
+        width: 100vw;
+    }
+    #intro-container {
+        margin: 100px 10vw;
+    }
+    #zip-container {
+        margin: 100px 0;
+    }
+    #question {
+        font-size: 7vw;
+    }
+    #sine {
+        margin: 2px 0 50px 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #map-container {
+        margin: 10px 0;
+    }
+    .map {
+        width: 400px; 
+        height: 400px;
+        margin: 0;
+    }
 }
