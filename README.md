@@ -41,7 +41,7 @@ Then I am given the name of a random restaurant based off of the above criteria
 
 **API References**
 - Documenu API
-
+- Maps Embed API by GOOGLE
 
 ## CONTRIBUTORS
 - Diana Salas
@@ -50,7 +50,15 @@ Then I am given the name of a random restaurant based off of the above criteria
 - Grant Leasure
 
 ## MOCK-UP
-<!-- add image -->
+![Homework Screenshot 1](https://github.com/Sirmaaalik/Project1/blob/develop-2/assets/images/screenshots/Project1Screenshot1.png?raw=true)
+
+![Homework Screenshot 2](https://github.com/Sirmaaalik/Project1/blob/develop-2/assets/images/screenshots/Project1Screenshot2.png?raw=true)
+
+![Homework Screenshot 3](https://github.com/Sirmaaalik/Project1/blob/develop-2/assets/images/screenshots/Project1Screenshot3.png?raw=true)
+
+![Homework Screenshot 4](https://github.com/Sirmaaalik/Project1/blob/develop-2/assets/images/screenshots/Project1Screenshot4.png?raw=true)
+
+![Homework Screenshot 5](https://github.com/Sirmaaalik/Project1/blob/develop-2/assets/images/screenshots/Project1Screenshot5.png?raw=true)
 
 
 ## DEPLOYED WEBPAGE
