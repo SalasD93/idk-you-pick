@@ -121,8 +121,8 @@ function showRestaurant() {
     $(displayAddress).text(restaurantAddress);
     // This link calls and displays the map API
     $(displayAddress).on('click',function(){
-        $(displayContainer).hide();
         getMap();
+        $(displayContainer).hide();
     })
     //This function is to hide the restaurant's address and display it on the map.
     //The user will see where the restaurant is located.
@@ -136,8 +136,8 @@ function showRestaurant() {
     $(displayContainer).show();
     // This button calls and displays the map API
     $(directionsButton).on('click', function(){
-        $(displayContainer).hide();
         getMap();
+        $(displayContainer).hide();
     });
 }
 // API for restuarants and menus by zip code
