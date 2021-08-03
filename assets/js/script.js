@@ -8,8 +8,10 @@ var getMap = function(){
     $(mapContainer).attr('id', "map-container");
     $(mapContainer).addClass("container");
     var map = document.createElement('iframe');
+    $(map).attr("loading", "lazy");
+    $(map).attr("allowfullscreen", "");
     $(map).addClass("map");
-    $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}+loading=lazy+allowfullscreen`);
+    $(map).attr("src",`https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg&q=${linkAddress}`);
     body.append(mapContainer);
     mapContainer.appendChild(map);
 }
@@ -177,8 +179,12 @@ async function getData() {
         }
     }
     // This will display the cuisine names for the cuisine object of restaurants onto the buttons
+    var button = 0;
     for (cuisine in cuisineList) {
-        document.querySelector('#sine').innerHTML += `<button class="cuisine">${cuisine}</button>`;
+        if (button < 10) {
+            document.querySelector('#sine').innerHTML += `<button class="button cuisine">${cuisine}</button>`;
+        }
+        button++;
     }
     // This gets the selected cuisine
     $('.cuisine').on('click', function (e) {
@@ -194,9 +200,7 @@ async function getData() {
         // This stores restaurant info to be shown on page
         const restName = chosenRestaurant.restaurant_name;
         localStorage.setItem("Name", restName);
-        const restPhone = chosenRestaurant.restaurant_phone;
-        localStorage.setItem("Phone", restPhone);
-        const restAddress = chosenRestaurant.address.formatted;       
+        const restAddress = chosenRestaurant.address.formatted;     
         localStorage.setItem("Address", restAddress);
     }
 }
