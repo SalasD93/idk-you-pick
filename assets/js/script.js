@@ -25,8 +25,11 @@ $(question).text("What are you in the mood for?");
 body.append(questionContainer);
 questionContainer.appendChild(question);
 questionContainer.appendChild(answers);
+localStorage.removeItem("Name");
+localStorage.removeItem("Address");
+localStorage.removeItem("Phone");
 // This will load items when page starts
-$(document).ready(function(){
+$(document).ready( function(){
     // This holds the intro display
     var introContainer = document.createElement('div');
     $(introContainer).attr('id', "intro-container");
@@ -114,31 +117,36 @@ function showRestaurant() {
     var restaurantName = localStorage.getItem("Name");
     // if you are trying to style just the restaurant name use the class restaurant in this span
     displayRestaurant.innerHTML = "Your restaurant is:" + "<br/>" + `<span class="restaurant">${restaurantName}</span>`
+    var displayPhone = document.createElement('p');
+    $(displayPhone).attr('id', "phone-number");
+    var restPhone = localStorage.getItem("Phone");
+    $(displayPhone).text(restPhone);
     // This is a link for the address to link to directions to the restaurant
     var displayAddress = document.createElement('a');
     $(displayAddress).attr('id', "restaurant-address");
     var restaurantAddress = localStorage.getItem("Address");
     $(displayAddress).text(restaurantAddress);
     // This link calls and displays the map API
-    $(displayAddress).on('click',function(){
+    $(displayAddress).on('click', function(){
         getMap();
         $(displayContainer).hide();
-    })
+    });
     //This function is to hide the restaurant's address and display it on the map.
     //The user will see where the restaurant is located.
     var directionsButton = document.createElement('button');
     $(directionsButton).addClass("button is-link is-light");
     directionsButton.innerHTML = "MAP VIEW";
-    body.append(displayContainer);
-    displayContainer.appendChild(displayRestaurant);
-    displayContainer.appendChild(displayAddress);
-    displayContainer.appendChild(directionsButton);
-    $(displayContainer).show();
     // This button calls and displays the map API
     $(directionsButton).on('click', function(){
         getMap();
         $(displayContainer).hide();
     });
+    body.append(displayContainer);
+    displayContainer.appendChild(displayRestaurant);
+    displayContainer.appendChild(displayPhone);
+    displayContainer.appendChild(displayAddress);
+    displayContainer.appendChild(directionsButton);
+    $(displayContainer).show();
 }
 // API for restuarants and menus by zip code
 async function getData() {
@@ -182,9 +190,12 @@ async function getData() {
     // This function get the information that matches the random restaurant / gets restaurant name and address
     function selectedCuisine(cuisine) {
         var chosenRestaurant = cuisineList[cuisine][Math.floor(Math.random() * cuisineList[cuisine].length)];
+        console.log(chosenRestaurant);
         // This stores restaurant info to be shown on page
         const restName = chosenRestaurant.restaurant_name;
         localStorage.setItem("Name", restName);
+        const restPhone = chosenRestaurant.restaurant_phone;
+        localStorage.setItem("Phone", restPhone);
         const restAddress = chosenRestaurant.address.formatted;       
         localStorage.setItem("Address", restAddress);
     }
