@@ -47,7 +47,6 @@ Then I am given the name of a random restaurant based off of the above criteria
 - Diana Salas
 - Malik Harris
 - Jeremy McGuirk
-- Grant Leasure
 
 ## MOCK-UP
 ![Homework Screenshot 1](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot1.png?raw=true)
@@ -70,8 +69,10 @@ https://sirmaaalik.github.io/Project1/
 
 https://github.com/Sirmaaalik/Project1
 
+## DISCLAIMER
+The original idea for the app was presented by the main contributor, Diana Salas, during a brainstorming session with Malik Harris and Jeremy McGuirk. No other contributors added to this code.
 
 ## COPYRIGHT
-Diana Salas, Malik Harris, Jeremy McGuirk, Grant Leasure
+Diana Salas, Malik Harris, Jeremy McGuirk
 
 © 2021 All Rights Reserved
