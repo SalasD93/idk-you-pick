@@ -49,25 +49,25 @@ Then I am given the name of a random restaurant based off of the above criteria
 - Jeremy McGuirk
 
 ## MOCK-UP
-![Homework Screenshot 1](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot1.png?raw=true)
+![Homework Screenshot 1](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot1.png?raw=true)
 
-![Homework Screenshot 2](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot2.png?raw=true)
+![Homework Screenshot 2](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot2.png?raw=true)
 
-![Homework Screenshot 3](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot3.png?raw=true)
+![Homework Screenshot 3](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot3.png?raw=true)
 
-![Homework Screenshot 4](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot4.png?raw=true)
+![Homework Screenshot 4](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot4.png?raw=true)
 
-![Homework Screenshot 5](https://github.com/Sirmaaalik/Project1/blob/main/assets/images/screenshots/Project1Screenshot5.png?raw=true)
+![Homework Screenshot 5](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot5.png?raw=true)
 
 
 ## DEPLOYED WEBPAGE
 
-https://sirmaaalik.github.io/Project1/
+https://SalasD93.github.io/Project1/
 
 
 ## REPOSITORY
 
-https://github.com/Sirmaaalik/Project1
+https://github.com/SalasD93/Project1
 
 ## DISCLAIMER
 The original idea for the app was presented by the main contributor, Diana Salas, during a brainstorming session with Malik Harris and Jeremy McGuirk. No other contributors added to this code.
