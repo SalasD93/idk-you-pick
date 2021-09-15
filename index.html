@@ -1,171 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<<<<<<< HEAD
-    <title>Honey, you pick?</title>
-    <style>
-        body {
-            background-color: rgb(59, 107, 155);
-            text-align: center;
-            font-family: 'Times New Roman', Times, serif;
-            width: auto;
-            height: auto;
-            color: white;
-            text-shadow: black 2px -2px 5px;
-            background-image: url(./css/images/Fast_food_French_fries_Beer_Hamburger_Highball_524931_1920x1080.jpg);
-       }
-       button {
-           font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;   
-       }
-   </style>
-</head>
-<body>
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-    <section class="hero">
-        <div class="container">
-            <div class="row">
-            <div class="col">
-                <h1>Honey, you pick?</h1>
-            </div>
-            </div>
-            <div class="row">
-                <div class="col">               
-                </div>
-                <div class="col-4">
-                    This application allows you to randomly generate a restaurant in your area when you are having a hard time choosing where to eat.
-
-                    To use this app, enter your zip code on the next page and answer the following questions.                
-                </div>
-                <div class="col">             
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <button>Start</button>
-                </div>
-            </div>
-        </div>
-    </section>
-</body>
-=======
-=======
-    <div id="info"></div>
->>>>>>> 7c83748 (got a function to work with API)
-=======
-    <!-- <div id="info"></div> -->
-=======
->>>>>>> 2932cef (added some functions to view information relevant to the project)
-    <p>
-        Restaurant Name: <span id="name"></span><br/>
-        Restaurant Zip Code: <span id="address"></span><br/>
-        Restaurant Cuisine: <span id="sine"></span>
-        <!-- Restaurant Menu Items: <span id="menu"></span> -->
-    </p>
->>>>>>> 83c9524 (refactored code for API function / will get all restaurants & menus by zip_code)
-    <script>
-        // Have a function that compares key words to items in the menu arrays
-        // API for restuarants and menus by zip code
-        const api_url = "https://api.documenu.com/v2/restaurants/zip_code/33773?size=20&fullmenu=true&top_cuisines=false&key=fe622a5ac3aa4f64e60a0ab9c844306d";
-        async function getData() {
-            const response = await fetch(api_url, {
-                "method": "GET",
-                "headers": {
-                    "x-api-key": "fe622a5ac3aa4f64e60a0ab9c844306d",
-                    "x-rapidapi-host": "documenu.p.rapidapi.com"
-                }
-            });
-            console.log(response);
-            
-            const totalRestaurants = await response.json();
-            console.log(totalRestaurants);
-            const restName = totalRestaurants.data[1].restaurant_name;
-            console.log(restName);
-            // zip code is postal_code for restaurant data
-            const restAddress = totalRestaurants.data[1].address.formatted;
-            console.log(restAddress);
-            // const restZipCode = totalRestaurants.data[1].address.postal_code;
-            // console.log(restZipCode);
-            const restMenu = totalRestaurants.data[1].menus;
-            console.log(restMenu);
-            const restCuisine = totalRestaurants.data[1].cuisines;
-            console.log(restCuisine);
-            // const menuItems = totalRestaurants.data[1].menus[0].menu_sections[0];
-            // console.log(menuItems);
-
-            document.querySelector('#name').innerHTML = restName;
-            document.querySelector('#address').innerHTML = restAddress;
-            document.querySelector('#sine').innerHTML = restCuisine;
-            // document.querySelector('#menu').innerHTML = menuItems;
-        }
-        
-        getData();        
-        
-        // Use to get current location
-        // if ('geolocation' in navigator) {
-        // console.log('geolocation available');
-        // navigator.geolocation.getCurrentPosition(position => {
-        //     console.log(position.coords);
-        // });
-        // } else {
-        //     console.log('geolocation not available');
-        // }
-    </script>
-    </body>
->>>>>>> 45bab38 (add documenu API / add geolocation)
-=======
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-    <link rel="stylesheet" href="./css-main/styles.css">
-    <title>IDK, You Pick!</title>
-    </head>
-    
-  
-  <body>
-
-         <header id="header-content" class="container header">
-         <a href="#" class="title center is-size-1">IDK, You Pick!</a>
-         </header>
-
-    <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="./script.js"></script>
-</body>
->>>>>>> 812c5f1 (merged branch)
-=======
     <head>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
-        <link rel="stylesheet" href="./css-main/styles.css">
+        <link rel="stylesheet" href="./assets/css-main/styles.css">
         <title>IDK, You Pick!</title>
     </head>
     <body>
         <header id="header-content" class="container header">
             <a href="#" class="title center is-size-1">IDK, You Pick!</a>
         </header>
-<<<<<<< HEAD
-
-=======
-        <iframe
-          width="600"
-          height="450"
-          style="border:0"
-          loading="lazy"
-          allowfullscreen
-          src="https://www.google.com/maps/embed/v1/place?key=AIzaSyBGjt8MdI_N4adowcL8ig1YcWWSkzGm3Tg
-            &q=Space+Needle,Seattle+WA">
-        </iframe>
->>>>>>> 4eacc0c (embed API testing)
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="./script.js"></script>
+        <script src="./assets/js/script.js"></script>
     </body>
->>>>>>> c2a48c5 (updated relative positioning to css)
 </html>

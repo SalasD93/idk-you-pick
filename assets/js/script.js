@@ -174,7 +174,13 @@ async function getData() {
         // This prevents duplicate cuisines
         for (var z = 0; z < currentRestaurant.cuisines.length; z++) {
             if (currentRestaurant.cuisines[z] != '') {
-                document.querySelector('#sine').innerHTML += `<button class="button cuisine">${currentRestaurant.cuisines[z]}</button>`;
+                // This adds the restaurants to the matching cuisine object
+                if (cuisineList[currentRestaurant.cuisines[z]]) {
+                    cuisineList[currentRestaurant.cuisines[z]].push(currentRestaurant);
+                } else {
+                    cuisineList[currentRestaurant.cuisines[z]] = [currentRestaurant];
+                }
+                
             }
         }
     }
@@ -200,7 +206,9 @@ async function getData() {
         // This stores restaurant info to be shown on page
         const restName = chosenRestaurant.restaurant_name;
         localStorage.setItem("Name", restName);
-        const restAddress = chosenRestaurant.address.formatted;     
+        const restPhone = chosenRestaurant.restaurant_phone;
+        localStorage.setItem("Phone", restPhone);
+        const restAddress = chosenRestaurant.address.formatted;       
         localStorage.setItem("Address", restAddress);
     }
 }

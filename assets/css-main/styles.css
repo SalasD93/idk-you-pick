@@ -166,7 +166,45 @@ header a {
 }
 
 #map-container {
-    margin: 100px 250px;
+    margin: 5vw 20vw;
+}
+
+.map {
+    width: 45vw; 
+    height: 30vw;
+    position: relative;
+    margin: 50px 0;
+}
+
+@media screen and (max-width: 900px) {
+    body::before {
+        height: 100vh;
+        width: 100vw;
+    }
+    #intro-container {
+        margin: 100px 10vw;
+    }
+    #zip-container {
+        margin: 100px 0;
+    }
+    #question {
+        font-size: 7vw;
+    }
+    #sine {
+        margin: 2px 0 50px 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #map-container {
+        margin: 10px 0;
+    }
+    .map {
+        width: 400px; 
+        height: 400px;
+        margin: 0;
+    }
 }
 
 @media screen and (max-width: 500px) {
