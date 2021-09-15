@@ -49,25 +49,25 @@ Then I am given the name of a random restaurant based off of the above criteria
 - Jeremy McGuirk
 
 ## MOCK-UP
-![Homework Screenshot 1](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot1.png?raw=true)
+![Homework Screenshot 1](./assets/images/screenshots/Project1Screenshot1.png)
 
-![Homework Screenshot 2](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot2.png?raw=true)
+![Homework Screenshot 2](./assets/images/screenshots/Project1Screenshot2.png)
 
-![Homework Screenshot 3](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot3.png?raw=true)
+![Homework Screenshot 3](./assets/images/screenshots/Project1Screenshot3.png)
 
-![Homework Screenshot 4](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot4.png?raw=true)
+![Homework Screenshot 4](./assets/images/screenshots/Project1Screenshot4.png)
 
-![Homework Screenshot 5](https://github.com/SalasD93/Project1/blob/main/assets/images/screenshots/Project1Screenshot5.png?raw=true)
+![Homework Screenshot 5](./assets/images/screenshots/Project1Screenshot5.png)
 
 
 ## DEPLOYED WEBPAGE
 
-https://SalasD93.github.io/Project1/
+https://SalasD93.github.io/idk-you-pick/
 
 
 ## REPOSITORY
 
-https://github.com/SalasD93/Project1
+https://github.com/SalasD93/idk-you-pick
 
 ## DISCLAIMER
 The original idea for the app was presented by the main contributor, Diana Salas, during a brainstorming session with Malik Harris and Jeremy McGuirk. No other contributors added to this code.
